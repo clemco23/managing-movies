@@ -1,0 +1,98 @@
+Utilisateur côté client.
+(Une app React, une app Html/CSS/Javascript, depuis Postman, depuis un plugin VSCODE)
+
+Une requête HTTP précise sur une adresse précise (une route / endpoint):
+Une requête GET sur /api/news
+
+Une fonctionnalité du backend est déclenchée lorsque la bonne requête est faite sur la bonne adresse.
+Cette fonctionnalité va donc dialoguer avec la BDD.
+
+Et en réponse, nous allons renvoyer les données a l'utilisateur en format JSON:
+{
+    "title": "Mon super article",
+    "content": "Le contenu de mon super article"
+}
+
+Si j'ai envie de créer une application permettant a des utilisateurs de faire des requêtes HTTP sur des adresses que j'aurais défini au préalable, puis recevoir des données en échange, j'aurai besoin de mettre en place différents composants :
+
+1. Des ROUTES ! 
+    /api/news
+    /api/users
+    /api/products
+
+2. Des CONTROLLERS !
+Les controllers sont le petit bout de code qui va REELLEMENT executer des ordres.
+C'est un peu le chef d'orchestre, il reçoit une requête HTTP, il envoie des ordres a la BDD, et rerenvoie une réponse au client.
+
+    NewsController
+    UserController
+    ProductController
+
+    Get /api/news -> NewsController.getAllNews()
+
+3. Des MODELS !
+Les modèles, sont les fichiers qui vont définir la structure/schéma de données d'une TABLE.
+C'est a dire, mon modèle news, pourras décrire par exemple qu'une News contient ceci :
+
+    title, string
+    content, text
+    author, uuid
+    publicationDate, date
+
+Développement d'API :
+
+1. Qu'est ce que c'est qu'une API/Webservices ?
+    - Un backend indépendant avec lequel on peut communiquer via des requêtes HTTP(navigateur, extension vscode, postman, ou bien une app Front)
+
+2. Qu'est ce que c'est que Node JS ? Express ! (npm)
+    - NodeJS = Javascript coté serveur, Express = framework stable de NodeJS
+
+3. Qu'est ce que c'est qu'une architecture MVC ?
+    - Une structure de dossier/fichiers qui permet de séparer la logique en 3 composants principaux :
+        - Model : Définition d'une structure de données
+        - Controller : C'est ici ou la logique applicative se lance réellement, le chef d'orchestre
+        - Route : C'est ici qu'on définis l'adresse ainsi que le type/la structure de requête a effectuer
+
+4. Qu'est ce que c'est que Docker ?
+    - 
+
+Cross Origin Ressource Sharing
+
+Pour le déploiement d'une application aujourd'hui on utilise la plupart des fois une structure de déploiement qui ressemble a ça :
+
+- Un environnement de DEV/TEST (L'application sur laquelle on travaille, on développe des fonctionnalité, on corrige des bugs, on lance les tests...)
+- Un environnement de PREPROD ()
+- Un environnement de PROD (L'application en ligne, accessible a l'utilisateur, le "LIVE")
+
+EXERCICES :
+
+
+
+Exercice 1 - NodeJS :
+
+Nous avons mis en place un petit serveur Nodejs, qui est connecté a une base de donnée vierge MongoDB.
+Nous voulons mettre en place dans un premier temps la gestion/manipulation de données pour une table "Users".
+Nous allons dans le futur, développer chacun de notre côté, différentes fonctionnalités, qui manipulerons différentes données.
+
+Nous aimerions réfléchir et concevoir une petite application nous permettant de manipuler entre 2 et 4 tables.
+C'est a dire, par exemple, si j'ai envie de concevoir un site d'e-commerce je risque de mettre en place les tables suivantes :
+
+E-commerce :
+
+    - Users
+    - Products
+    - Orders
+    
+    Une ordre contient un user ID et un/des products id
+
+Réseau social :
+
+    - Users
+    - Posts 
+    - Likes & Commentaires
+
+Je veux que vous ayez réfléchis et conçu ces 3/4 tables avec leur structure de données qui va avec :
+Exemple : la table users contient : name string required, email string required, password string required, etc...
+
+CONCEVEZ CECI SOUS FORME DE TEXTE, PAS DE CODE
+draw.sql (si vous voulez faire un schéma visuel)
