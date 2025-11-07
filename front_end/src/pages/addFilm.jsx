@@ -247,7 +247,7 @@ const navigate = useNavigate();
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white font-semibold py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+          className="w-full bg-red-600 text-white font-semibold py-2 rounded hover:bg-blue-700 disabled:opacity-50"
         >
           {loading ? "En cours..." : "film ajouté"}
         </button>

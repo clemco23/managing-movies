@@ -1,10 +1,29 @@
 services:
+  frontend:
+    build:
+      context: ./front_end
+      dockerfile: Dockerfile
+    container_name: frontend_container
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:3000/api
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    # volumes:
+    #   - ./front_end:/app
+    #   - /app/node_modules
+      
+
+
   backend:
     build:
-      context: ./backend
+      context: ./back_end
       dockerfile: Dockerfile
     container_name: backend_container
-    restart: unless-stopped
+    restart: always
     ports:
       - "3000:3000"
     environment:
@@ -13,8 +32,7 @@ services:
     depends_on:
       - mongo
     volumes:
-      - .:/app
-      - /app/node_modules
+      - ./back_end:/app    # <-- on monte uniquement le dossier backend
 
   mongo:
     image: mongo:latest
@@ -23,7 +41,7 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
-    restart:  always
+    restart: always
 
 volumes:
   mongo_data:
