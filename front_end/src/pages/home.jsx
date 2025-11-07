@@ -122,7 +122,7 @@ export default function Home() {
             )}
             <button className="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700 transition">
                 <Link to="/addFilm" className="block w-full h-full">
-                    Ajouter un film +
+                    Ajouter un film 
                 </Link>
             </button>
 
