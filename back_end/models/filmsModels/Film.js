@@ -60,7 +60,13 @@ const filmSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  }
+  },
+   
+  tmdbId: { type: Number, default: null, index: true },
+  tmdbPosterPath: { type: String, default: null },
+  tmdbGenres: { type: [Number], default: [] },     // ids TMDB
+  tmdbVoteAverage: { type: Number, default: null },
+  tmdbVoteCount: { type: Number, default: null },
 });
 
 module.exports = mongoose.model('Film', filmSchema);

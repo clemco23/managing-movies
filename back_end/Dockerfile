@@ -1,21 +1,21 @@
 
-FROM node:18
+# FROM node:18
 
 
-WORKDIR /app
+# WORKDIR /app
 
 
-COPY package*.json ./
+# COPY package*.json ./
 
 
-RUN npm install
+# RUN npm install
 
 
-COPY . .
+# COPY . .
 
-ENV NODE_ENV=development
+# ENV NODE_ENV=development
 
-EXPOSE 5000
+# EXPOSE 5000
 
 
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]

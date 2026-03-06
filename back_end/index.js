@@ -6,6 +6,7 @@ const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const filmRoutes = require('./routes/filmsRoutes/filmRoutes');
 const favoriRoutes = require('./routes/filmsRoutes/favoriRoutes');
+const categorieRoutes = require('./routes/filmsRoutes/categorieRoutes');
 
 
 const app = express();
@@ -19,6 +20,8 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/users', userRoutes);
 app.use('/api/films', filmRoutes);
 app.use('/api/favoris', favoriRoutes);
+app.use("/api/categories", categorieRoutes);
+
 // app.use('/api/users/:id', userRoutes);
 
 app.get('/', (req, res) => {
@@ -36,3 +39,5 @@ mongoose.connect(process.env.MONGO_URI)
 app.listen(port, () => {
   console.log(`Server online at http://localhost:${port}`);
 });
+
+// console.log(process.env.TMDB_API_KEY);

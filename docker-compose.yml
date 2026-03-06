@@ -1,51 +1,52 @@
-services:
-  frontend:
-    build:
-      context: ./front_end
-      dockerfile: Dockerfile
-    container_name: frontend_container
-    restart: always
-    ports:
-      - "5000:5000"
-    environment:
-      - REACT_APP_API_URL=http://localhost:3000/api
-      - NODE_ENV=development
-      - HOST=0.0.0.0
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
+# services:
+#   frontend:
+#     build:
+#       context: ./front_end
+#       dockerfile: Dockerfile
+#     container_name: frontend_container
+#     restart: always
+#     ports:
+#       - "5000:5000"
+#     environment:
+#       - REACT_APP_API_URL=http://localhost:3000/api
+#       - NODE_ENV=development
+#       - HOST=0.0.0.0
+#       - CHOKIDAR_USEPOLLING=true
+#       - WATCHPACK_POLLING=true
 
-    depends_on:
-      - backend
-    volumes:
-      - ./front_end:/app
-      - /app/node_modules
-    command: npm run dev  
+#     depends_on:
+#       - backend
+#     volumes:
+#       - ./front_end:/app
+#       - /app/node_modules
+#     command: npm run dev  
 
 
-  backend:
-    build:
-      context: ./back_end
-      dockerfile: Dockerfile
-    container_name: backend_container
-    restart: always
-    ports:
-      - "3000:3000"
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/node_api
-      - NODE_ENV=development
-    depends_on:
-      - mongo
-    volumes:
-      - ./back_end:/app    # <-- on monte uniquement le dossier backend
+#   backend:
+#     build:
+#       context: ./back_end
+#       dockerfile: Dockerfile
+#     container_name: backend_container
+#     restart: always
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - MONGO_URI=mongodb://mongo:27017/node_api
+#       - NODE_ENV=development
+#       - TMDB_API_KEY=6863c4bb0e16198bac0a3b179983781c
+#     depends_on:
+#       - mongo
+#     volumes:
+#       - ./back_end:/app    # <-- on monte uniquement le dossier backend
 
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-    restart: always
+#   mongo:
+#     image: mongo:latest
+#     container_name: mongo
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - mongo_data:/data/db
+#     restart: always
 
-volumes:
-  mongo_data:
+# volumes:
+#   mongo_data:

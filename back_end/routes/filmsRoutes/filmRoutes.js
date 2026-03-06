@@ -19,6 +19,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 //routes Privées
+router.get('/recommendations', verifyToken, filmController.getRecommendations);
+
 router.get('/', verifyToken, filmController.getAllFilms);
 router.get('/:id', verifyToken, filmController.getFilmById);
 router.post('/', verifyToken, upload.single('pictures'), filmController.createFilm);
